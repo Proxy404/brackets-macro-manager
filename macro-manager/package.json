@@ -1,0 +1,11 @@
+{
+    "name": "austinmarkiewicz.macro-manager",
+    "title": "Macro Manager",
+    "description": "An easy way to create and run macros in Brackets",
+    "version": "1.0.0",
+    "author": "Austin Markiewicz <Prxy404@gmail.com>",
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=1.7.0"
+    }
+}

@@ -1,0 +1,21 @@
+#macro-manager-record {
+    /*background-image: url('macro_record_icon_off.png');*/
+    background-image: url('images/macro_rec_icon_off.png');
+    background-position: center;
+}
+
+
+#macro-manager-record.macro-recording {
+    /*background-image: url('macro_record_icon_on.png');*/
+    background-image: url('images/macro_rec_icon_on.png');
+    
+    background-position: center;
+}
+
+#macro-manager-run {
+    background-image: url('images/macro_run_icon_off.png');
+}
+
+#macro-manager-run.macro-running {
+    background-image: url('images/macro_run_icon_on.png');
+}
