@@ -30,7 +30,6 @@ define(function (require, exports, module) {
         EditorManager = brackets.getModule("editor/EditorManager"),
         Menus = brackets.getModule("command/Menus"),
         MacroManager = require("MacroManager"),
-        KeyEvent = brackets.getModule("utils/KeyEvent"),
         ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
     
     var recordMenuCommand, runMenuCommand = {};
@@ -165,6 +164,7 @@ define(function (require, exports, module) {
             })
             .appendTo($("#main-toolbar .buttons"));
         
+        console.log('Loaded Macro-Manager Extension');
     });
     
 });

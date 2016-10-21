@@ -110,7 +110,7 @@ define(function (require, exports, module) {
     
     
     function runMacro () {
-    
+        console.log('Macro Run');
         MacroRunner.runMacro(macroArray, copiedText);
         
     };
@@ -121,4 +121,5 @@ define(function (require, exports, module) {
     exports.runMacro = runMacro;
     exports.copyTextEventHandler = copyTextEventHandler;
     
+    console.log(KeyEvent);
 });
