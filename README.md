@@ -11,7 +11,7 @@ Let's say you have a list of the U.S. states and their abbreviations. You need t
 ![brackets-macro-manager](images/demo.gif)
 
 ## How does it work?
-Recording can be triggered by pressing *Ctrl+Alt+F9*, selecting "Edit>Record Macro", or by clicking the tape record button ![brackets-macro-manager](images/macro_record_tape_off.png) on the right toolbar. The tape record icon on the right toolbar will then turn red ![brackets-macro-manager](images/macro_record_tape_on.png) indicating that keystrokes are being recorded. When you're done, the recording is then stopped the same way it was started.
+Recording can be triggered by pressing *Ctrl+Alt+F9*, selecting "Edit>Record Macro", or by clicking the tape record button ![brackets-macro-manager](macro-manager/images/macro_record_tape_off.png) on the right toolbar. The tape record icon on the right toolbar will then turn red ![brackets-macro-manager](macro-manager/images/macro_record_tape_on.png) indicating that keystrokes are being recorded. When you're done, the recording is then stopped the same way it was started.
 
 This list of actions can then be "played back" or repeated programatically by pressing *Ctrl+Alt+F10*, selecting "Edit>Run Macro", or by clicking the triangular play button on the right toolbar. The macro will begin repeating the keystrokes the user made starting wherever the cursor is.
 
