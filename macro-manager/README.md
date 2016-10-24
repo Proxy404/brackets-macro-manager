@@ -1,7 +1,7 @@
 # brackets-macro-manager
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-An extension for creating and running macros in Adobe Brackets.
 
+An extension for creating and running macros in Adobe Brackets.
 
 ## What is it?
 Macro-manager is an Adobe Brackets extension that allows you to record key strokes and play them back as many times as you like. This is a huge time saving tool when code needs many repetative changes that are a little more complicated than simple copy paste.
@@ -20,6 +20,7 @@ Use Brackets built in Extension Manager or down load the "macro-manager" folder 
 
 ## Nuances and Known bugs
 **Ignored Keys**
+
 There are a number of keys that we don't actually want to record. These include keys like the Function keys (F1-F12), print screen and so on. The full list of currently ignored keys is below. I'll explain why we're ignoring some in a sec.
 
 // Array of keyboard keys to ignore
@@ -61,6 +62,7 @@ There are some inherent problems with this:
     2. Again, because we can't request the most recently copied object, we can only capture things that are copied *within an editor in Brackets*.
 
 **Known Bugs**
+
 If you find a bug, shoot me an email with the text you're working on and the keys you're pressing with a short blurb about what you're expecting to see. I'll get to it as soon as I can!
 
 - Ctrl+x - this doesn't work and I don't really see a way to make it work until Brackets provides some sort of way to access the clipboard.
