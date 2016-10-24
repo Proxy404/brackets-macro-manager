@@ -21,33 +21,8 @@ Use Brackets built in Extension Manager or down load the "macro-manager" folder 
 ## Nuances and Known bugs
 **Ignored Keys**
 
-There are a number of keys that we don't actually want to record. These include keys like the Function keys (F1-F12), print screen and so on. The full list of currently ignored keys is below. I'll explain why we're ignoring some in a sec.
-
-// Array of keyboard keys to ignore
-var blacklist = [
-    16,  // Shift
-    17,  // Control
-    18,  // Alt
-    19,  // Pause/Break
-    20,  // Caps Lock
-    33,  // Page Up
-    34,  // Page Down
-    44,  // Print Screen
-    91,  // Windows/Mac Key
-    112, // F1
-    113, // F2
-    114, // F3
-    115, // F4
-    116, // F5
-    117, // F6
-    118, // F7
-    119, // F8
-    120, // F9
-    121, // F10
-    122, // F11
-    123, // F12
-    145  // Screen Lock
-];
+There are a number of keys that we don't actually want to record. These include keys like the Function keys (F1-F12), print screen and so on. The full list of currently ignored keys are:
+Shift, Control, Alt, Pause/Break, Caps Lock, Page Up, Page Down, Print Screen, Windows/Mac Key, F1 - F12, Screen Lock.
 
 The modifier keys (CTRL, SHIFT, ALT, etc) are stored as booleans in the KeyboardEvent object so we don't want to record them, we can pull the boolean on playback. The function keys usually contain program level commands so we don't want to be able to automate them. There are also some things we just can't or are really difficult to replicate like Page Up and Page Down. Aaand some other stuff I haven't gotten around to. 
 
