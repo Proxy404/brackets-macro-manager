@@ -32,9 +32,9 @@ First of all, we don't have access to Brackets' or the OS's clipboard so each ex
 
 There are some inherent problems with this:
 
-    1. By the time any of the added events or listeners are fired, Brackets has already done it's thing. Meaning if the user presses CTRL+x for cut, Brackets has already added the selected text to the clipboard and removed it from the editor by the time the extension's listener is fired. The text is gone and can't be retrieved because we don't currently (OCT 2016) have access to the clipboard.
+1. By the time any of the added events or listeners are fired, Brackets has already done it's thing. Meaning if the user presses CTRL+x for cut, Brackets has already added the selected text to the clipboard and removed it from the editor by the time the extension's listener is fired. The text is gone and can't be retrieved because we don't currently (OCT 2016) have access to the clipboard.
 
-    2. Again, because we can't request the most recently copied object, we can only capture things that are copied *within an editor in Brackets*.
+2. Again, because we can't request the most recently copied object, we can only capture things that are copied *within an editor in Brackets*.
 
 **Known Bugs**
 
