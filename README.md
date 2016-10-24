@@ -8,7 +8,7 @@ Macro-manager is an Adobe Brackets extension that allows you to record key strok
 
 Let's say you have a list of the U.S. states and their abbreviations. You need this list put into a table in your database. Instead of painstakingly typing up an insert statement for all 50, you could do something like this:
 
-![brackets-macro-manager](images/demo.gif)
+![brackets-macro-manager](macro-manager/images/macro_demo.gif)
 
 ## How does it work?
 Recording can be triggered by pressing *Ctrl+Alt+F9*, selecting "Edit>Record Macro", or by clicking the tape record button ![brackets-macro-manager](macro-manager/images/macro_record_tape_off.png) on the right toolbar. The tape record icon on the right toolbar will then turn red ![brackets-macro-manager](macro-manager/images/macro_record_tape_on.png) indicating that keystrokes are being recorded. When you're done, the recording is then stopped the same way it was started.
