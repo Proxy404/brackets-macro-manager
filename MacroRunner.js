@@ -30,7 +30,7 @@ define(function (require, exports, module) {
         DocumentManager = brackets.getModule("document/DocumentManager");
         
     // used for debugging the runner
-    var debugSwitch = true;
+    var debugSwitch = false;
     var debugLevel = 3;
     
     
@@ -199,20 +199,38 @@ define(function (require, exports, module) {
                                 // Text from the line the cursor is on
                                 var line = document.getLine(pos.line);
                                 
+                                debug('line length: '+line.length);
+                                
                                 var sawChar = false;
                                 
-                                for (var x=pos.ch; x<=document.getLine(pos.line).length; x++) {
-                                    //debug(x + ' "' + line[x].trim() + '" ' + sawChar);
+                                var startXPos = pos.ch;
+                                
+                                for (var x=pos.ch; x<line.length; x++) {
                                     
-                                    if (x == document.getLine(pos.line).length) {
+                                    var isSpecial = isSpecialChar(line[x].toString().trim());
+                                    
+                                    if (x == line.length-1) {
                                         // if the loop reached the end of the line put the cursor there
-                                        newPos.ch = x;
+                                        debug('setting index at: '+x, 3);
+                                        newPos.ch = x+1;
                                         break;
-                                    } else if (!sawChar && line[x].toString().trim() != "") {
-                                        debug('setting sawChar true');
+                                        
+                                    } else if ((x == startXPos) && isSpecial) { // if the very next character is special, only increment the count by one
+                                        
+                                        debug('next char newPos.ch = '+x, 3);
+                                        newPos.ch = x+1;
+                                        break;
+                                        
+                                    } else if (!sawChar && (isSpecial || line[x].toString().trim() == "")) { // if there hasn't been any characters before seeing a special or a space, keep looking
+                                      continue;  
+                                      
+                                    } else if (!sawChar && !isSpecial && line[x].toString().trim() != "") {
+                                        debug('saw non-special non-space character', 3);
                                         sawChar = true;
-                                    } else if (sawChar && line[x].toString().trim() == "") {
-                                        debug('newPos.ch = '+x);
+                                        continue;
+                                        
+                                    } else if (sawChar && (isSpecial || line[x].toString().trim() == "")) {
+                                        debug('isSpecial or is space newPos.ch = '+x, 3);
                                         newPos.ch = x;
                                         break;
                                     }
@@ -781,6 +799,21 @@ define(function (require, exports, module) {
                     default:                            item.normalizedCode = item.code.toLowerCase(); break;
                 }
             }
+        }
+    }
+    
+    
+    // Match the ch to any special character
+    function isSpecialChar (ch) {
+        if (ch == "!" || ch == "@" || ch == "#" || ch == "$" || ch == "%" || ch == "^" || ch == "&"
+            || ch == "*" || ch == "(" || ch == ")" || ch == "-" || ch == "_" || ch == "=" || ch == "+"
+            || ch == "[" || ch == "]" || ch == "{" || ch == "}" || ch == "\\" || ch == "|" || ch == ";"
+            || ch == ":" || ch == "'" || ch == "\"" || ch == "," || ch == "." || ch == "<" || ch == ">"
+            || ch == "/" || ch == "?") {
+            
+            return true;
+        } else {
+            return false;
         }
     }
     
