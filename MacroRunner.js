@@ -30,7 +30,7 @@ define(function (require, exports, module) {
         DocumentManager = brackets.getModule("document/DocumentManager");
         
     // used for debugging the runner
-    var debugSwitch = false;
+    var debugSwitch = true;
     var debugLevel = 3;
     
     
@@ -198,8 +198,6 @@ define(function (require, exports, module) {
                                 
                                 // Text from the line the cursor is on
                                 var line = document.getLine(pos.line);
-                                
-                                debug('line length: '+line.length);
                                 
                                 var sawChar = false;
                                 
@@ -382,19 +380,34 @@ define(function (require, exports, module) {
                                 
                                 var sawChar = false;
                                 
+                                var startXPos = pos.ch;
+                                
                                 for (var x=pos.ch-1; x>=0; x--) {
                                     
-                                    debug(x + ' "' + line[x].toString().trim() + '" ' + sawChar);
+                                    var isSpecial = isSpecialChar(line[x].toString().trim());
                                     
                                     if (x == 0) {
                                         // if the loop reached the end of the line put the cursor there
+                                        debug('setting index at: '+x, 3);
                                         newPos.ch = 0;
                                         break;
-                                    } else if (!sawChar && line[x].toString().trim() != "") {
-                                        debug('setting sawChar true');
+                                        
+                                    } else if ((x == startXPos-1) && isSpecial) { // if the very next character is special, only increment the count by one
+                                        
+                                        debug('next char newPos.ch = '+x, 3);
+                                        newPos.ch = x;
+                                        break;
+                                        
+                                    } else if (!sawChar && (isSpecial || line[x].toString().trim() == "")) { // if there hasn't been any characters before seeing a special or a space, keep looking
+                                      continue;  
+                                      
+                                    } else if (!sawChar && !isSpecial && line[x].toString().trim() != "") {
+                                        debug('saw non-special non-space character', 3);
                                         sawChar = true;
-                                    } else if (sawChar && line[x].toString().trim() == "") {
-                                        debug('newPos.ch = '+x);
+                                        continue;
+                                        
+                                    } else if (sawChar && (isSpecial || line[x].toString().trim() == "")) {
+                                        debug('isSpecial or is space newPos.ch = '+x, 3);
                                         newPos.ch = x+1;
                                         break;
                                     }
